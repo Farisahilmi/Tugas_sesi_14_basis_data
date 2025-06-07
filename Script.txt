@@ -1,0 +1,126 @@
+DISINI Saya Menggunakan Database Toko_buku
+
+ 
+ 
+Query untuk membuat tabel
+import sqlite3
+
+# 1. Buka koneksi ke database (akan buat file toko_buku.db kalau belum ada)
+conn = sqlite3.connect('toko_buku.db')
+
+# 2. Buat cursor untuk kirim query SQL
+cursor = conn.cursor()
+
+# 3. Buat tabel Categories (DDL)
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Categories (
+        CategoryID INTEGER PRIMARY KEY AUTOINCREMENT,
+        CategoryName TEXT NOT NULL
+    )
+''')
+
+# 4. Commit perubahan (simpan ke database)
+conn.commit()
+
+# 5. Tutup koneksi
+conn.close()
+
+print("Tabel Categories berhasil dibuat.")
+
+Penjelasan step-by-step:
+✅ import sqlite3 → Import modul sqlite3 bawaan Python
+✅ sqlite3.connect() → Buka/membuat database
+✅ cursor = conn.cursor() → Siapkan alat kirim query
+✅ cursor.execute('CREATE TABLE...') → Kirim perintah buat tabel
+✅ conn.commit() → Simpan perubahan
+✅ conn.close() → Tutup koneksi
+ 
+ 
+ 
+ @      APA ITU DML? (DATA MANIPULATION LANGUAGE)
+
+ CRUD (dasar sintax dan itu ada 4 singkatan)
+
+ C = CREATE (menambah data)
+ R = READ   (mengambil data)
+ U = UPDATE (mengubah data)
+ D = DELETE (menghapus data)
+
+ DML adalah singkatan dari DATA MANIPULATION LANGUAGE, Yaitu bagian dari SQL
+ yang digunakan untuk mengelola data di dalam tabel database
+
+ Perintah perintah utama DML:
+
+ Insert > untuk menambah data baru ke tabel
+
+# INSERT INTO Categories (CategoryName) VALUES ('Novel');
+# INSERT INTO Books (Title, Author, CategoryID, SupplierID, Price)
+VALUES ('Python untuk Pemula', 'Budi Santoso', 2, 1, 75000);
+# INSERT INTO Suppliers (SupplierName, ContactInfo)
+VALUES ('PT Buku Kita', 'bukukita@example.com');
+# INSERT INTO Customers (CustomerName, ContactInfo)
+VALUES ('Andi Wijaya', 'andi@example.com');
+# INSERT INTO Employees (EmployeeName, Position)
+VALUES ('Dewi Lestari', 'Kasir');
+
+ Select > untuk mengambil (menampilkan) data dari tabel
+ % Dasar Select
+ ^ semua di select
+ SELECT * FROM NamaTabel; (arti * semua tabel)
+
+% select lebih kompleks
+^ ambil kolom tertentu saja
+SELECT title, Price From books;
+
+^pakai kondisi (Where)
+SELECT * FROM books Where price > 50000;
+
+^Urutkan (ORDER BY)
+SELECT * FROM Books ORDER BY Price DESC; (descending = dari yang terbesar ke yang terkecil)
+SELECT * FROM Books ORDER BY Price ASC; (ascending = Urutkan dari kecil ke besar)
+
+^batasi jumlah(LIMIT)
+SELECT * FROM Books LIMIT 2;(limit 2 = hanya ambil 2 baris pertama dari hasil query)
+
+
+ Update > untuk mengubah data yang sudah adalah
+
+^ basic sintax
+ Update books
+ Set Price = 80000
+ Where title = "python untuk pemula
+
+ Delete > untuuk menghapus data dari tabel
+^ basic sintax
+*jika mau hapus semua data dalam tabel
+DELETE FROM books;
+
+*jika mau spesifik
+DELETE FROM NamaTabel
+Where kondisi;
+
+DELETE FROM Books
+WHERE  title = "komik naruto";
+
+@       APA ITU DDL? (DATA DEFINITION LANGUAGE)
+DDL adalah perintah SQL untuk membuat, mengubah, dan menhapus struktur database dan tabel, bukan isi datanya
+
+^ membuat tabel sintax
+
+CREATE TABLE Students (
+    StudentID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL,
+    Age INTEGER,
+    Major TEXT
+);
+
+^ contoh tambahkan kolom baru sintax
+
+ALTER TABLE Students
+ADD COLUMN Email TEXT;
+
+^ Menghapus Tabel
+
+DROP TABLE Students;
+
+TRUNCATE TABLE (Hapus semua data dengan cepat)
