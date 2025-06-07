@@ -40,3 +40,16 @@ CREATE TABLE IF NOT EXISTS Employees (
     Position TEXT,
     Phone TEXT
 );
+
+
+CREATE TABLE IF NOT EXISTS Sales (
+    SalesID INTEGER PRIMARY KEY AUTOINCREMENT,
+    BookID INTEGER,
+    CustomersID INTEGER,
+    EmployeeID INTEGER,
+    Quantity INTEGER,
+    SalesDate TEXT,
+    FOREIGN KEY (BookID) REFERENCES Books (BookID),
+    FOREIGN KEY (CustomersID) REFERENCES Customers (CustomersID),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID)
+);
