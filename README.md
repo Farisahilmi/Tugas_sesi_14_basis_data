@@ -1,0 +1,1 @@
+# Tugas_sesi_14_basis_data
