@@ -124,3 +124,9 @@ ADD COLUMN Email TEXT;
 DROP TABLE Students;
 
 TRUNCATE TABLE (Hapus semua data dengan cepat)
+
+# cara reset AUTOINCREMENT (kalau pakai INTEGER PRIMARY KEY AUTOINCREMENT)
+setelah DELETE FROM, kalau ingin reset ID DI SQLite:
+
+DELETE FROM mahasiswa;
+DELETE FROM sqlite_sequence WHERE name="mahasiswa" ("mahasiswa" nama table )
