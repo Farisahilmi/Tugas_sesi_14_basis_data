@@ -3,6 +3,7 @@ DISINI Saya Menggunakan Database Toko_buku
  
  
 Query untuk membuat tabel
+
 import sqlite3
 
 # 1. Buka koneksi ke database (akan buat file toko_buku.db kalau belum ada)
@@ -41,10 +42,10 @@ Penjelasan step-by-step:
 
  CRUD (dasar sintax dan itu ada 4 singkatan)
 
- C = CREATE (menambah data)
- R = READ   (mengambil data)
- U = UPDATE (mengubah data)
- D = DELETE (menghapus data)
+ C = CREATE (menambah data) = INSERT INTO
+ R = READ   (mengambil data) = SELECT
+ U = UPDATE (mengubah data) = UPDATE
+ D = DELETE (menghapus data) = DELETE
 
  DML adalah singkatan dari DATA MANIPULATION LANGUAGE, Yaitu bagian dari SQL
  yang digunakan untuk mengelola data di dalam tabel database
@@ -54,8 +55,10 @@ Penjelasan step-by-step:
  Insert > untuk menambah data baru ke tabel
 
 # INSERT INTO Categories (CategoryName) VALUES ('Novel');
+
 # INSERT INTO Books (Title, Author, CategoryID, SupplierID, Price)
 VALUES ('Python untuk Pemula', 'Budi Santoso', 2, 1, 75000);
+
 # INSERT INTO Suppliers (SupplierName, ContactInfo)
 VALUES ('PT Buku Kita', 'bukukita@example.com');
 # INSERT INTO Customers (CustomerName, ContactInfo)
