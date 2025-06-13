@@ -1,5 +1,3 @@
 -- database: d:\Tugas_sesi_14\toko_buku.db
 
 
-DELETE FROM Suppliers;
-DELETE FROM sqlite_sequence WHERE name = "Suppliers"

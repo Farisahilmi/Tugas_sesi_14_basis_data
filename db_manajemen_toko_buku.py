@@ -56,6 +56,20 @@ CREATE TABLE IF NOT EXISTS Employees(
     Phone TEXT
 )
 """)
+# buat tabel sales (transaksi)
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS Sales (
+    SalesID INTEGER PRIMARY KEY AUTOINCREMENT,
+    BookID INTEGER,
+    CustomersID INTEGER,
+    EmployeeID INTEGER,
+    Quantity INTEGER,
+    SalesDate TEXT,
+    FOREIGN KEY (BookID) REFERENCES Books (BookID),
+    FOREIGN KEY (CustomersID) REFERENCES Customers (CustomersID),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID)
+)
+""")
 
 conn.commit()
 conn.close()
